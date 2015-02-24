@@ -57,7 +57,7 @@ gulp.task('gen-js', function() {
 });
 
 // Images
-gulp.task('images', function() {
+gulp.task('gen-img', function() {
     return gulp.src('app/img/**/*')
         .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
         .pipe(gulp.dest('release/img'))
@@ -72,7 +72,7 @@ gulp.task('clean', function(cb) {
 // Default task
 gulp.task('default', ['clean'], function() {
     //gulp.start('styles', 'scripts', 'images');
-    gulp.start(['gen-html', 'gen-css', 'gen-bower-css']);
+    gulp.start(['gen-html', 'gen-css', 'gen-bower-css', 'gen-img']);
 });
 
 // Watch

@@ -2,7 +2,7 @@ body {
   min-height: 100vh;
   background: $darkGrey;
 
-  background-image: url('../app/img/noise-2.png');
+  background-image: url('img/noise-2.png');
   //background=#333333ff&noise=666666&density=19&opacity=82
   color: #ffffff;
   color: #888;
@@ -22,6 +22,18 @@ body {
   line-height: 40px;
   background: $darkGlass;
   margin-bottom: 30px;
+}
+
+#rambo-io {
+  position: absolute;
+  z-index: -1;
+  color: $darkGlass;
+  bottom: 50%;
+  width: 100%;
+  left: 0;
+  font-size: 100px;
+  text-align: center;
+//  font-weight: 800;
 }
 
 h1, h2, h3 {
