@@ -1,0 +1,84 @@
+body {
+  min-height: 100vh;
+  background: $darkGrey;
+
+  background-image: url('../app/img/noise-2.png');
+  //background=#333333ff&noise=666666&density=19&opacity=82
+  color: #ffffff;
+  color: #888;
+
+  font-family: 'Raleway', sans-serif;
+//  background-image: url('http://www.dvdbeaver.com/film4/blu-ray_reviews57/secret_beyond_the_door_blu-ray_/large/large_secret_beyond_the_door_blu-ray_x06.jpg');
+//  background-image: url('http://www.jamesvegter.com/resources/backgirl-d4vc5a0.jpg');
+//  background-image: url('../app/img/background.png');
+//  background-image: url('../app/img/6ghgesn.jpg');
+//  background-image: url('../app/img/oavv3DC.jpg');
+//  background-position: center;
+//  background-size: cover;
+}
+
+#header {
+  height: 40px;
+  line-height: 40px;
+  background: $darkGlass;
+  margin-bottom: 30px;
+}
+
+h1, h2, h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: white;
+}
+
+hr {
+  margin: 15px 0;
+  padding: 0;
+  background: $glass;
+  height: 3px;
+  border: none;
+}
+
+.box {
+  background: $darkGlass;
+  border-radius: 3px;
+  overflow: hidden;
+  color: $lightGrey;
+  margin-bottom: 10px;
+
+  .box-header {
+    height: 40px;
+    line-height: 40px;
+    background: $darkGlass;
+    padding: 0 15px;
+    font-weight: 300;
+    color: #ffffff;
+  }
+
+  .box-color {
+    float: right;
+    height: 10px;
+    width: 10px;
+    margin-top: 15px;
+    border-radius: 10px;
+    display: inline-block;
+    background: #ffab0c;
+  }
+
+  .box-color-2 {
+    @extend .box-color;
+    background-color: #356dae;
+  }
+
+  .box-color-3 {
+    @extend .box-color;
+    background-color: #6aae2a;
+  }
+
+  .box-content {
+    padding: 15px;
+    //color: black;
+    display: none;
+  }
+
+
+}
