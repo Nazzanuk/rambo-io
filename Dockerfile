@@ -6,6 +6,7 @@ RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-
 RUN     yum install -y npm
 RUN     yum update ruby
 RUN     yum install rubygems -y
+RUN     echo "testindividual"
 #CMD     ["yum install rubygems", "y"]
 RUN     gem update --system
 
