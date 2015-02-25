@@ -9,8 +9,9 @@ RUN     yum install -y npm
 COPY . /container
 
 # Install app dependencies
-RUN cd /container; npm install; npm install http-server -g
+RUN cd /container; npm install; npm install http-server -g;npm install --global gulp
 
 EXPOSE 5000
 #CMD ["node", "/container/index.js"]
 CMD ["http-server", "/container/release"]
+CMD ["gulp"]
