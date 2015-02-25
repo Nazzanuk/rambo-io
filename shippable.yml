@@ -7,3 +7,6 @@ notifications:
   email:
     - nazzanuk@gmail.com
     - mac.isidoro@gmail.com
+
+script:
+- true #or any custom command
