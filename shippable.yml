@@ -1,12 +1,9 @@
 # language setting
 language: node_js
 
-# Running the tests with grunt
-script:
-  - gulp
-
 commit_container: rambo-io
 
 notifications:
   email:
     - nazzanuk@gmail.com
+    - mac.isidoro@gmail.com
