@@ -22,6 +22,13 @@ app.get('/webhooks/gulp', function (req, res) {
     });
 });
 
+app.get('/webhooks/update', function (req, res) {
+    execute('git pull; gulp', function (print) {
+        console.log(print);
+        res.send(print);
+    });
+});
+
 app.get('/webhooks/ps', function (req, res) {
     execute('ps', function (print) {
         console.log(print);
