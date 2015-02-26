@@ -23,4 +23,4 @@ script:
   - gulp
 
 after_success:
-  - http://52.16.36.52:5000/webhooks/update
+  - curl "http://52.16.36.52:5000/webhooks/update"
