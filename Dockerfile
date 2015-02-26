@@ -19,7 +19,8 @@ COPY . /app
 # Install app dependencies
 RUN cd /app; npm install; npm install http-server -g;npm install -g gulp; npm install -g forever
 RUN cd /app; gulp
-RUN cd /app; forever start webhooks.js
+#RUN cd /app; forever start webhooks.js
 
 EXPOSE 5000
-#CMD ["forever", "/app/webhooks.js"]
+#CMD ["forever", "/app/webhooksudo docker imageds.js"]
+CMD ["forever", "start", "/app/webhooks.js"]
