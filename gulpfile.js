@@ -21,7 +21,7 @@ var gulp = require('gulp'),
 // HTML
 gulp.task('gen-html', function() {
     return gulp.src(['app/header.html', 'app/app.html', 'app/components/**/*.html', 'app/footer.html'])
-        .pipe(concat('app.html'))
+        .pipe(concat('index.html'))
         .pipe(gulp.dest('release'))
         .pipe(notify({ message: 'Generated App HTML' }));
 });

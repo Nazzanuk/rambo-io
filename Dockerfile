@@ -21,5 +21,4 @@ RUN cd /app; npm install; npm install http-server -g;npm install -g gulp
 RUN cd /app; gulp
 
 EXPOSE 5000
-#CMD ["node", "/container/index.js"]
-CMD ["http-server", "/container/release"]
+CMD ["node", "/app/webhooks.js"]
