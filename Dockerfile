@@ -19,4 +19,4 @@ RUN cd /app; npm install; npm install http-server -g;npm install -g gulp; npm in
 RUN cd /app; gulp
 
 EXPOSE 5000
-CMD ["forever", "/app/webhooks.js"]
+CMD ["sh", "/run.sh"]
