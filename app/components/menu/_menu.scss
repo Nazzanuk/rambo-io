@@ -1,0 +1,46 @@
+[data-template="menu"] {
+  background: $darkGlass;
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  width:100px;
+  text-align: center;
+
+
+  .logo {
+    margin-bottom: 50px;
+    color: #ffffff;
+    img {
+      opacity: 0.9;
+      margin: 15px;
+      width: 70px;
+      display: block;
+    }
+  }
+
+  ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  ul {
+    margin: 15px;
+    li {
+      margin-bottom: 30px;
+      cursor: pointer;
+
+      i {
+        margin-bottom: 5px;
+        font-size: 30px;
+        display: block;
+      }
+
+      &:hover, &.active {
+        color: #ffffff;
+      }
+    }
+  }
+}

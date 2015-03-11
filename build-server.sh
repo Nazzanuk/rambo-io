@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 sudo docker build --tag rambo-io .
 sudo docker stop rambo-io .
 sudo docker rm rambo-io .
