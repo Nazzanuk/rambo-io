@@ -1,0 +1,41 @@
+<script type="text/ng-template" id="story.html">
+    <div class="box">
+        <div class="box-header">
+            <!--<i class="fa fa-angle-right"></i> &nbsp;-->
+            {{story.getName()}}
+            <div class="box-color-2"></div>
+            <div ng-show="story.isBlocked()" class="box-blocked">
+                <i class="fa fa-exclamation-circle"></i>
+            </div>
+            <i class="fa fa-bars fa-fw pull-right" ng-click="showMenu()" style="cursor: pointer"></i>
+
+            <div class="box-menu" ng-show="isMenuOpen()">
+                <div class="box-menu-header">
+                    Menu
+                    <i class="fa fa-times fa-fw pull-right" ng-click="hideMenu()"></i>
+                </div>
+
+                <ul>
+                    <li>
+                        <ul>
+                            <li ng-repeat="user in getUsers() track by $index"
+                                ng-click="story.addUser(user);hideMenu();"
+                                    >{{user.getName()}}</li>
+                        </ul>
+                        Assign to...
+                    </li>
+                    <li ng-click="story.block()" ng-show="!story.isBlocked()">Block</li>
+                    <li ng-click="story.unblock()" ng-show="story.isBlocked()">Unblock</li>
+                    <li>Change Epic</li>
+                    <li ng-click="story.setStatus('in progress');hideMenu();">Start</li>
+                    <li ng-click="story.setStatus('backlog');hideMenu();">Send to backlog</li>
+                    <li ng-click="story.setStatus('done');hideMenu();">Done!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="box-content">
+            Extra Story Content
+        </div>
+    </div>
+</script>

@@ -7,22 +7,22 @@
         </div>
 
         <ul>
-            <li class="active">
+            <li ng-class="{active:isScreen('board')}" ng-click="setScreen('board')">
                 <i class="fa fa-users"></i>
 
                 <div>Board</div>
             </li>
-            <li>
+            <li ng-class="{active:isScreen('backlog')}" ng-click="setScreen('backlog')">
                 <i class="fa fa-list"></i>
 
-                <div>Backlog</div>
+                <div>Stories</div>
             </li>
-            <li>
+            <li ng-class="{active:isScreen('burndown')}" ng-click="setScreen('burndown')">
                 <i class="fa fa-area-chart"></i>
 
                 <div>Burndown</div>
             </li>
-            <li>
+            <li ng-class="{active:isScreen('control')}" ng-click="setScreen('control')">
                 <i class="fa fa-cog"></i>
 
                 <div>Sprint Control</div>

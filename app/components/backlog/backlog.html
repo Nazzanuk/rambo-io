@@ -1,0 +1,57 @@
+<script type="text/ng-template" id="backlog.html">
+    <div class="content">
+        <div data-template="backlog">
+
+            <h1>Stories</h1>
+            <hr/>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>Backlog</h2>
+                    <hr/>
+                    <br/>
+                </div>
+
+                <div class="col-sm-4">
+                    <h2>In Progress</h2>
+                    <hr/>
+                    <br/>
+                </div>
+
+                <div class="col-sm-4">
+                    <h2>Done</h2>
+                    <hr/>
+                    <br/>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div ng-repeat="story in getStoriesByStatus('backlog') track by $index">
+                        <div story-box story="story"></div>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="box-color-2"></div>
+                            <input type="text" placeholder="Add Story" ng-model="newStoryTitle"/>
+                            <i class="fa fa-check fa-fw pull-right" ng-click="addStory(newStoryTitle)" style="cursor: pointer"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div ng-repeat="story in getStoriesByStatus('in progress') track by $index">
+                        <div story-box story="story"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div ng-repeat="story in getStoriesByStatus('done') track by $index">
+                        <div story-box story="story"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

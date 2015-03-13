@@ -1,12 +1,11 @@
 [data-template="menu"] {
   background: $darkGlass;
   position: absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  width:100px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100px;
   text-align: center;
-
 
   .logo {
     margin-bottom: 50px;
@@ -31,6 +30,7 @@
     li {
       margin-bottom: 30px;
       cursor: pointer;
+      position: relative;
 
       i {
         margin-bottom: 5px;

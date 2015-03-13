@@ -1,14 +1,18 @@
 [data-template="board"] {
-  padding: 30px;
 
   .user {
 
-    padding-bottom: 15px;
+//    padding-bottom: 15px;
     margin-bottom: 30px;
-    border-bottom: 3px solid $glass;
+//    border-bottom: 3px solid $glass;
 
     .user-name {
       margin-bottom: 15px;
+      margin-top: 15px;
+      //color: #ffffff;
+      font-weight: bold;
+//      text-transform: uppercase;
+      padding-left: 65px;
     }
 
     .user-image {
@@ -18,6 +22,7 @@
       border-radius: 3px;
       overflow: hidden;
       margin-right: 15px;
+      float: left;
 
       background-position: center;
       background-size: cover;

@@ -50,6 +50,9 @@ gulp.task('gen-bower-css', function () {
 gulp.task('gen-bower-js', function () {
     return gulp.src([
         'app/bower-components/jquery/dist/jquery.min.js',
+        'app/bower-components/underscore/underscore-min.js',
+        'app/bower-components/velocity/velocity.min.js',
+        'app/bower-components/velocity/velocity.ui.js',
         'app/bower-components/angular/angular.min.js'
     ])
         .pipe(concat('bower.js'))

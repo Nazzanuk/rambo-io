@@ -12,94 +12,109 @@
 
 </head>
 <body ng-app="rambo-io">
-<span menu></span>
-<div class="content">
-    <span board></span>
+<div class="wrapper">
+    <span screen board></span>
+    <span screen backlog></span>
 </div>
+<span screen menu></span>
+<script type="text/ng-template" id="backlog.html">
+    <div class="content">
+        <div data-template="backlog">
 
+            <h1>Stories</h1>
+            <hr/>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>Backlog</h2>
+                    <hr/>
+                    <br/>
+                </div>
+
+                <div class="col-sm-4">
+                    <h2>In Progress</h2>
+                    <hr/>
+                    <br/>
+                </div>
+
+                <div class="col-sm-4">
+                    <h2>Done</h2>
+                    <hr/>
+                    <br/>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div ng-repeat="story in getStoriesByStatus('backlog') track by $index">
+                        <div story-box story="story"></div>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="box-color-2"></div>
+                            <input type="text" placeholder="Add Story" ng-model="newStoryTitle"/>
+                            <i class="fa fa-check fa-fw pull-right" ng-click="addStory(newStoryTitle)" style="cursor: pointer"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div ng-repeat="story in getStoriesByStatus('in progress') track by $index">
+                        <div story-box story="story"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div ng-repeat="story in getStoriesByStatus('done') track by $index">
+                        <div story-box story="story"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
 <script type="text/ng-template" id="board.html">
-    <div data-template="board">
-        <h1>Board</h1>
-        <hr/>
+    <div class="content">
+        <div data-template="board">
+            <h1>Board</h1>
+            <hr/>
+            <br/>
 
-        <div class="row">
-            <div class="col-sm-3">
-                <h2>User</h2>
-            </div>
-            <!--<div class="col-sm-3">-->
-                <!--<h2>To Do</h2>-->
-            <!--</div>-->
-
-            <div class="col-sm-9">
-                <h2>In Progress</h2>
-            </div>
-            <!--<div class="col-sm-3">-->
-                <!--<h2>Blocked</h2>-->
-            <!--</div>-->
-        </div>
-
-        <div class="row user">
-            <div class="col-sm-3">
-                <div class="user-name">Nathan Nelson</div>
-                <div class="user-image" style="background-image: url('https://randomuser.me/api/portraits/men/10.jpg')"></div>
-            </div>
-            <div class="col-sm-9">
-
-                <div class="box">
-                    <div class="box-header">
-                        <!--<i class="fa fa-angle-right"></i> &nbsp;-->
-                        Define Docker Push Approach
-                        <div class="box-color-3"></div>
-                        <i class="fa fa-bars fa-fw pull-right"></i>
-                    </div>
-
-                    <div class="box-content">
-                        Teste4
-                    </div>
-                </div>
-                <div class="box">
-                    <div class="box-header">
-                        <!--<i class="fa fa-angle-right"></i> &nbsp;-->
-                        Create UI Assets
-                        <div class="box-color"></div>
-                        <i class="fa fa-bars fa-fw pull-right"></i>
-                    </div>
-
-                    <div class="box-content">
-                        Teste4
-                    </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>User</h2>
+                    <hr/>
+                    <br/>
                 </div>
 
-            </div>
-        </div>
-
-        <div class="row user">
-            <div class="col-sm-3">
-                <div class="user-name">Miguel Isisdoro</div>
-                <div class="user-image" style="background-image: url('https://randomuser.me/api/portraits/men/0.jpg')"></div>
-            </div>
-            <div class="col-sm-9">
-
-                <div class="box">
-                    <div class="box-header">
-                        <!--<i class="fa fa-angle-right"></i> &nbsp;-->
-                        Define Alt Build Approach
-                        <div class="box-color-3"></div>
-                        <i class="fa fa-bars fa-fw pull-right"></i>
-                    </div>
-
-                    <div class="box-content">
-                        Teste4
-                    </div>
+                <div class="col-sm-9">
+                    <h2>Working On</h2>
+                    <hr/>
+                    <br/>
                 </div>
             </div>
+
+            <div class="row user" ng-repeat="user in getUsers() track by $index">
+                <div class="col-sm-3">
+                    <div class="user-image"
+                         style="background-image: url('{{user.getImage()}}')"></div>
+                    <div class="user-name">{{user.getName()}}</div>
+                </div>
+                <div class="col-sm-9">
+
+                    <div ng-repeat="story in getStoriesByUser(user) track by $index">
+                        <div story-box story="story"></div>
+                    </div>
+
+                </div>
+            </div>
+
+
         </div>
 
     </div>
 </script>
-<div>
-
-</div>
 <script type="text/ng-template" id="menu.html">
     <div data-template="menu">
         <div class="logo">
@@ -109,28 +124,69 @@
         </div>
 
         <ul>
-            <li class="active">
+            <li ng-class="{active:isScreen('board')}" ng-click="setScreen('board')">
                 <i class="fa fa-users"></i>
 
                 <div>Board</div>
             </li>
-            <li>
+            <li ng-class="{active:isScreen('backlog')}" ng-click="setScreen('backlog')">
                 <i class="fa fa-list"></i>
 
-                <div>Backlog</div>
+                <div>Stories</div>
             </li>
-            <li>
+            <li ng-class="{active:isScreen('burndown')}" ng-click="setScreen('burndown')">
                 <i class="fa fa-area-chart"></i>
 
                 <div>Burndown</div>
             </li>
-            <li>
+            <li ng-class="{active:isScreen('control')}" ng-click="setScreen('control')">
                 <i class="fa fa-cog"></i>
 
                 <div>Sprint Control</div>
             </li>
         </ul>
 
+    </div>
+</script>
+<script type="text/ng-template" id="story.html">
+    <div class="box">
+        <div class="box-header">
+            <!--<i class="fa fa-angle-right"></i> &nbsp;-->
+            {{story.getName()}}
+            <div class="box-color-2"></div>
+            <div ng-show="story.isBlocked()" class="box-blocked">
+                <i class="fa fa-exclamation-circle"></i>
+            </div>
+            <i class="fa fa-bars fa-fw pull-right" ng-click="showMenu()" style="cursor: pointer"></i>
+
+            <div class="box-menu" ng-show="isMenuOpen()">
+                <div class="box-menu-header">
+                    Menu
+                    <i class="fa fa-times fa-fw pull-right" ng-click="hideMenu()"></i>
+                </div>
+
+                <ul>
+                    <li>
+                        <ul>
+                            <li ng-repeat="user in getUsers() track by $index"
+                                ng-click="story.addUser(user);hideMenu();"
+                                    >{{user.getName()}}</li>
+                        </ul>
+                        Assign to...
+                    </li>
+                    <li ng-click="story.block()" ng-show="!story.isBlocked()">Block</li>
+                    <li ng-click="story.unblock()" ng-show="story.isBlocked()">Unblock</li>
+                    <li>Change Epic</li>
+                    <li ng-click="story.setStatus('in progress');hideMenu();">Start</li>
+                    <li ng-click="story.setStatus('backlog');hideMenu();">Send to backlog</li>
+                    <li ng-click="story.setStatus('done');hideMenu();">Done!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="box-content">
+            Extra Story Content
+        </div>
     </div>
 </script>
 <script src="bower.js"></script>

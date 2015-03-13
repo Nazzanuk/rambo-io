@@ -1,8 +1,12 @@
 var app = angular.module('rambo-io');
 
-app.directive('menu', [function () {
+app.directive('menu', ['ScreenService', function (ScreenService) {
     var link = function (scope, element, attrs) {
-        scope.checkInDate = "";
+        scope.setScreen = ScreenService.setScreen;
+
+        scope.isScreen = function (id) {
+            return id == ScreenService.getScreen();
+        }
     };
 
     return {
