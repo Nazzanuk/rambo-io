@@ -126,11 +126,29 @@
 
             <div class="row">
                 <div class="col-sm-3">
+                    <h2>Project Name</h2>
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="line">
+                        <div style="position: relative">
+                            <input type="text" class="invisible-input" value="Friday 20th March">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
                     <h2>Start Date</h2>
                 </div>
 
                 <div class="col-sm-9">
-                    <h2>Friday 13th March</h2>
+                    <div class="line">
+                        <div style="position: relative">
+                            <input type="text" class="invisible-input" value="Friday 20th March">
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -140,7 +158,47 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <h2>Friday 20th March</h2>
+                    <div class="line">
+                        <div style="position: relative">
+                            <input type="text" class="invisible-input" value="Friday 20th March">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>Epics</h2>
+                </div>
+
+                <div class="col-sm-9">
+                    <div ng-repeat="epic in getEpics()">
+                        <div class="line">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <strong>Name</strong>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div style="position: relative">
+                                        <input type="text" class="invisible-input" ng-model="epic.title"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2">
+                                    <strong>Color</strong>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="line-color" style="background: {{epic.color}}">
+
+                                    </div>
+                                    <div style="position: relative">
+                                        <input type="text" class="invisible-input" ng-model="epic.color"/>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -223,7 +281,13 @@
         </div>
 
         <div class="box-content" ng-show="isContentOpen()">
-            <input ng-model="description" ng-change="setDescription()" ng-model-options="{ updateOn: 'blur' }"/>
+
+            <div style="position: relative">
+                <p><strong>Description</strong></p>
+                <p><textarea type="text" class="invisible-input static" ng-model="description" ng-change="setDescription()" ng-model-options="{ updateOn: 'blur' }"></textarea></p>
+
+                <p><strong>Users</strong></p>
+            </div>
         </div>
     </div>
 </script>

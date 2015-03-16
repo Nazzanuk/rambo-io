@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use('/app', express.static(__dirname + '/release'));
+
 //Connect to Mongoose
 
 var mongoose = require('mongoose');
@@ -64,8 +66,7 @@ app.put('/users', function (req, res) {
 });
 
 //Start
-
-var server = app.listen(8082, function () {
+var server = app.listen(80, function () {
     var host = server.address().address;
     var port = server.address().port;
     console.log('App listening at http://%s:%s', host, port)

@@ -6,8 +6,8 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
 
     var stories = [];
     var users = [];
-    var epics = [];
     var controls = {
+        projectName: "",
         startDate: new Date(),
         endDate: new Date(),
         epics: [
@@ -117,4 +117,5 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
     this.getStoriesByStatus = getStoriesByStatus;
     this.getStoriesByUser = getStoriesByUser;
     this.saveStories = saveStories;
+    this.getEpics = getEpics;
 });
