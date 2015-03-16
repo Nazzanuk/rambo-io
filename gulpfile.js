@@ -5,19 +5,16 @@
 
 // Load plugins
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
-    rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
-    cache = require('gulp-cache'),
     using = require('gulp-using'),
     livereload = require('gulp-livereload'),
-    jsx = require('gulp-jsx'),
     del = require('del');
 
 // HTML
@@ -32,8 +29,6 @@ gulp.task('gen-html', function () {
 gulp.task('gen-css', function () {
     return sass('app/app.scss', {style: 'expanded'})
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-        //.pipe(gulp.dest('release'))
-        //.pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
         .pipe(gulp.dest('release'))
         .pipe(notify({message: 'Generated App CSS'}));
@@ -63,13 +58,8 @@ gulp.task('gen-bower-js', function () {
 // Scripts
 gulp.task('gen-js', function () {
     return gulp.src(['app/app.js', 'app/components/**/*.js'])
-        //.pipe(jshint('.jshintrc'))
-        //.pipe(jshint.reporter('default'))
         .pipe(concat('app.js'))
         .pipe(jsx())
-        //.pipe(gulp.dest('release/'))
-        //.pipe(rename({ suffix: '.min' }))
-        //.pipe(uglify())
         .pipe(gulp.dest('release/'))
         .pipe(notify({message: 'Scripts task complete'}));
 });
@@ -101,16 +91,5 @@ gulp.task('watch', ['default'], function () {
     gulp.watch('app/**/*.scss', ['default']);
     gulp.watch('app/**/*.html', ['default']);
 
-    // Watch .js files
-    //gulp.watch('app/**/*.js', ['scripts']);
-
-    // Watch image files
-    //gulp.watch('src/images/**/*', ['images']);
-
-    // Create LiveReload server
-    //livereload.listen();
-
-    // Watch any files in dist/, reload on change
-    //gulp.watch(['dist/**']).on('change', livereload.changed);
 
 });
