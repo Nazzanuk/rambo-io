@@ -4,11 +4,16 @@ var app = angular.module('rambo-io');
 
 app.service("StoryFactory", function () {
 
-    var Story = function (name) {
+    var Story = function (name, args) {
         this.name = name;
         this.blocked = false;
+        this.epic = 0;
         this.status = 'backlog';
         this.users = [];
+
+        for (var i in args) {
+            this[i] = args[i];
+        }
     };
 
     var set = function (attribute) {
@@ -38,9 +43,17 @@ app.service("StoryFactory", function () {
         };
     };
 
+    var addUser = function (user) {
+        this.users.push({_id:user._id});
+        //DataService.saveStories();
+    };
+
     Story.prototype.setName = set('name');
     Story.prototype.getName = get('name');
-    Story.prototype.addUser = add('users');
+    Story.prototype.setDescription = set('description');
+    Story.prototype.getDescription = get('description');
+    Story.prototype.getEpic = get('epic');
+    Story.prototype.addUser = addUser;
     Story.prototype.getUsers = get('users');
     Story.prototype.setStatus = set('status');
     Story.prototype.getStatus = get('status');

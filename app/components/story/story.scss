@@ -15,6 +15,17 @@
     position: relative;
     border-radius: 30px;
 
+    .box-header-title {
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 40px;
+      display: inline-block;
+      right: 40px;
+      left: 30px;
+      position: absolute;
+    }
+
     input {
       background: none;
       line-height: inherit;
@@ -129,9 +140,14 @@
   }
 
   .box-content {
-    padding: 15px;
+    padding: 30px;
     //color: black;
-    display: none;
+//    display: none;
+    border-radius: 30px;
+    background: $darkGlass;
+    margin-top: -40px;
+    padding-top: 55px;
+    outline: none;
   }
 
 

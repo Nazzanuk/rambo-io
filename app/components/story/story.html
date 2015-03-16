@@ -2,11 +2,14 @@
     <div class="box">
         <div class="box-header">
             <!--<i class="fa fa-angle-right"></i> &nbsp;-->
-            {{story.getName()}}
-            <div class="box-color-2"></div>
-            <div ng-show="story.isBlocked()" class="box-blocked">
-                <i class="fa fa-exclamation-circle"></i>
+
+            <div class="box-header-title" ng-click="toggleContent()">
+                <i class="fa fa-angle-right" ng-show="!isContentOpen()"></i>
+                <i class="fa fa-angle-down" ng-show="isContentOpen()"></i>
+                <i class="fa fa-exclamation-circle" ng-show="story.isBlocked()" style="color: red"></i>
+                {{story.getName()}}
             </div>
+            <div class="box-color-2"></div>
             <i class="fa fa-bars fa-fw pull-right" ng-click="showMenu()" style="cursor: pointer"></i>
 
             <div class="box-menu" ng-show="isMenuOpen()">
@@ -24,18 +27,19 @@
                         </ul>
                         Assign to...
                     </li>
-                    <li ng-click="story.block()" ng-show="!story.isBlocked()">Block</li>
-                    <li ng-click="story.unblock()" ng-show="story.isBlocked()">Unblock</li>
+                    <li ng-click="block()" ng-show="!story.isBlocked()">Block</li>
+                    <li ng-click="unblock()" ng-show="story.isBlocked()">Unblock</li>
                     <li>Change Epic</li>
-                    <li ng-click="story.setStatus('in progress');hideMenu();">Start</li>
-                    <li ng-click="story.setStatus('backlog');hideMenu();">Send to backlog</li>
-                    <li ng-click="story.setStatus('done');hideMenu();">Done!</li>
+                    <li ng-click="setStatus('in progress')">Start</li>
+                    <li ng-click="setStatus('backlog')">Send to backlog</li>
+                    <li ng-click="setStatus('done')">Done!</li>
+                    <li ng-click="deleteStory()">Delete</li>
                 </ul>
             </div>
         </div>
 
-        <div class="box-content">
-            Extra Story Content
+        <div class="box-content" ng-show="isContentOpen()">
+            <input ng-model="description" ng-change="setDescription()" ng-model-options="{ updateOn: 'blur' }"/>
         </div>
     </div>
 </script>

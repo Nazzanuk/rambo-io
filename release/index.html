@@ -15,6 +15,8 @@
 <div class="wrapper">
     <span screen board></span>
     <span screen backlog></span>
+    <span screen burndown></span>
+    <span screen control></span>
 </div>
 <span screen menu></span>
 <script type="text/ng-template" id="backlog.html">
@@ -115,6 +117,38 @@
 
     </div>
 </script>
+<script type="text/ng-template" id="control.html">
+    <div class="content">
+        <div data-template="control">
+            <h1>Control</h1>
+            <hr/>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>Start Date</h2>
+                </div>
+
+                <div class="col-sm-9">
+                    <h2>Friday 13th March</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>End Date</h2>
+                </div>
+
+                <div class="col-sm-9">
+                    <h2>Friday 20th March</h2>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</script>
 <script type="text/ng-template" id="menu.html">
     <div data-template="menu">
         <div class="logo">
@@ -142,7 +176,7 @@
             <li ng-class="{active:isScreen('control')}" ng-click="setScreen('control')">
                 <i class="fa fa-cog"></i>
 
-                <div>Sprint Control</div>
+                <div>Control</div>
             </li>
         </ul>
 
@@ -152,11 +186,14 @@
     <div class="box">
         <div class="box-header">
             <!--<i class="fa fa-angle-right"></i> &nbsp;-->
-            {{story.getName()}}
-            <div class="box-color-2"></div>
-            <div ng-show="story.isBlocked()" class="box-blocked">
-                <i class="fa fa-exclamation-circle"></i>
+
+            <div class="box-header-title" ng-click="toggleContent()">
+                <i class="fa fa-angle-right" ng-show="!isContentOpen()"></i>
+                <i class="fa fa-angle-down" ng-show="isContentOpen()"></i>
+                <i class="fa fa-exclamation-circle" ng-show="story.isBlocked()" style="color: red"></i>
+                {{story.getName()}}
             </div>
+            <div class="box-color-2"></div>
             <i class="fa fa-bars fa-fw pull-right" ng-click="showMenu()" style="cursor: pointer"></i>
 
             <div class="box-menu" ng-show="isMenuOpen()">
@@ -174,18 +211,19 @@
                         </ul>
                         Assign to...
                     </li>
-                    <li ng-click="story.block()" ng-show="!story.isBlocked()">Block</li>
-                    <li ng-click="story.unblock()" ng-show="story.isBlocked()">Unblock</li>
+                    <li ng-click="block()" ng-show="!story.isBlocked()">Block</li>
+                    <li ng-click="unblock()" ng-show="story.isBlocked()">Unblock</li>
                     <li>Change Epic</li>
-                    <li ng-click="story.setStatus('in progress');hideMenu();">Start</li>
-                    <li ng-click="story.setStatus('backlog');hideMenu();">Send to backlog</li>
-                    <li ng-click="story.setStatus('done');hideMenu();">Done!</li>
+                    <li ng-click="setStatus('in progress')">Start</li>
+                    <li ng-click="setStatus('backlog')">Send to backlog</li>
+                    <li ng-click="setStatus('done')">Done!</li>
+                    <li ng-click="deleteStory()">Delete</li>
                 </ul>
             </div>
         </div>
 
-        <div class="box-content">
-            Extra Story Content
+        <div class="box-content" ng-show="isContentOpen()">
+            <input ng-model="description" ng-change="setDescription()" ng-model-options="{ updateOn: 'blur' }"/>
         </div>
     </div>
 </script>
