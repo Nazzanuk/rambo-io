@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/app', express.static(__dirname + '/release'));
+app.use('/app', express.static(__dirname + './../release'));
 
 //Connect to Mongoose
 

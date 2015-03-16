@@ -4,7 +4,7 @@ var app = angular.module('rambo-io');
 
 app.service("WebService", function (StoryFactory, UserFactory, $http) {
 
-    var DB_URL = "http://localhost:8082/";
+    var DB_URL = "/";
     var PROJECT_ID = "5506ba66e4b018f3e291ec10";
 
 
