@@ -75,6 +75,7 @@ app.directive('storyBox', ['DataService', function (DataService) {
             DataService.setControls(scope.controls);
         };
 
+        scope.saveStories = DataService.saveStories;
         scope.getControls = DataService.getControls;
         scope.getUsers = DataService.getUsers;
         scope.getUserById = getUserById;
