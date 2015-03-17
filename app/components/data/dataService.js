@@ -123,7 +123,7 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
     $interval(function () {
         loadProject();
         loadUsers();
-    },5000);
+    }, 10000);
 
     this.addStory = addStory;
     this.deleteStory = deleteStory;
