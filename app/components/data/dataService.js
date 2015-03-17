@@ -2,7 +2,7 @@
 
 var app = angular.module('rambo-io');
 
-app.service("DataService", function (StoryFactory, UserFactory, WebService, $http, $timeout) {
+app.service("DataService", function (StoryFactory, UserFactory, WebService, $http, $interval) {
 
     var stories = [];
     var users = [];
@@ -120,7 +120,7 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
 
     init();
 
-    $timeout(function () {
+    $interval(function () {
         loadProject();
         loadUsers();
     },5000);
