@@ -3,4 +3,4 @@ app/bower-components
 release
 .sass-cache
 .idea
-
+newrelic_agent.log

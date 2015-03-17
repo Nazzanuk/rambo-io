@@ -14,9 +14,10 @@ app.service("WebService", function (StoryFactory, UserFactory, $http) {
     var saveStories = function (stories) {
         var body = {
             stories: stories,
-            _id: PROJECT_ID
+            _id: PROJECT_ID,
+            dontCache: new Date().getTime()
         };
-        return $http.put(DB_URL + 'projects/' + dontCache(), body).then(function (response) {
+        return $http.put(DB_URL + 'projects/', body).then(function (response) {
             return response.docs;
         });
     };
@@ -24,9 +25,10 @@ app.service("WebService", function (StoryFactory, UserFactory, $http) {
     var saveControls = function (controls) {
         var body = {
             controls: controls,
-            _id: PROJECT_ID
+            _id: PROJECT_ID,
+            dontCache: new Date().getTime()
         };
-        return $http.put(DB_URL + 'projects/' + dontCache(), body).then(function (response) {
+        return $http.put(DB_URL + 'projects/', body).then(function (response) {
             return response.docs;
         });
     };
@@ -39,7 +41,11 @@ app.service("WebService", function (StoryFactory, UserFactory, $http) {
     };
 
     var loadUsers = function () {
-        return $http.get(DB_URL + 'users/' + dontCache()).then(function (response) {
+        return $http({
+            method: 'GET',
+            url: DB_URL + 'users/',
+            data: { dontCache: dontCache() }
+        }).then(function (response) {
             console.log(response);
             return response.data.docs;
         });
