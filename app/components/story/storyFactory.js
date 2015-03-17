@@ -52,6 +52,7 @@ app.service("StoryFactory", function () {
     Story.prototype.getName = get('name');
     Story.prototype.setDescription = set('description');
     Story.prototype.getDescription = get('description');
+    Story.prototype.setEpic = set('epic');
     Story.prototype.getEpic = get('epic');
     Story.prototype.addUser = addUser;
     Story.prototype.getUsers = get('users');

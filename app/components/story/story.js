@@ -55,8 +55,31 @@ app.directive('storyBox', ['DataService', function (DataService) {
             hideMenu();
         };
 
+        var setEpic = function (index) {
+            scope.story.setEpic(index);
+            DataService.saveStories();
+            hideMenu();
+        };
+
+        var addUser = function (user) {
+            scope.story.addUser(user);
+            DataService.saveStories();
+            hideMenu();
+        };
+
+        var getUserById = function (user) {
+            return _.findWhere(DataService.getUsers(), {_id:user._id});
+        };
+
+        scope.setControls = function () {
+            DataService.setControls(scope.controls);
+        };
+
+        scope.controls = DataService.getControls();
+        console.log('scope.controls',scope.controls);
 
         scope.getUsers = DataService.getUsers;
+        scope.getUserById = getUserById;
         scope.showMenu = showMenu;
         scope.hideMenu = hideMenu;
         scope.isMenuOpen = isMenuOpen;
@@ -67,6 +90,8 @@ app.directive('storyBox', ['DataService', function (DataService) {
         scope.block = block;
         scope.deleteStory = deleteStory;
         scope.setDescription = setDescription;
+        scope.setEpic = setEpic;
+        scope.addUser = addUser;
 
 
         scope.description = scope.story.getDescription();

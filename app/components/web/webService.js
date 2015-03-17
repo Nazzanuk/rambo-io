@@ -18,6 +18,16 @@ app.service("WebService", function (StoryFactory, UserFactory, $http) {
         });
     };
 
+    var saveControls = function (controls) {
+        var body = {
+            controls: controls,
+            _id: PROJECT_ID
+        };
+        return $http.put(DB_URL + 'projects/', body).then(function (response) {
+            return response.docs;
+        });
+    };
+
     var loadProject = function () {
         return $http.get(DB_URL + 'projects/id/' + PROJECT_ID).then(function (response) {
             console.log(response);
@@ -47,6 +57,7 @@ app.service("WebService", function (StoryFactory, UserFactory, $http) {
     };
 
     this.saveStories = saveStories;
+    this.saveControls = saveControls;
     this.loadProject = loadProject;
     this.loadUsers = loadUsers;
 });

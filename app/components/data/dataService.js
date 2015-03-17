@@ -2,23 +2,30 @@
 
 var app = angular.module('rambo-io');
 
-app.service("DataService", function (StoryFactory, UserFactory, WebService, $http) {
+app.service("DataService", function (StoryFactory, UserFactory, WebService, $http, $timeout) {
 
     var stories = [];
     var users = [];
     var controls = {
         projectName: "",
-        startDate: new Date(),
-        endDate: new Date(),
+        startDate: "",
+        endDate: "",
         epics: [
-            {title: 'UX', color: 'red'},
-            {title: 'UI', color: 'green'},
-            {title: 'Front End', color: 'blue'}
+            {title: '', color: ''},
+            {title: '', color: ''},
+            {title: '', color: ''},
+            {title: '', color: ''},
+            {title: '', color: ''}
         ]
     };
 
     var getControls = function () {
         return controls;
+    };
+
+    var setControls = function (newControls) {
+        if (newControls == undefined) return;
+        controls = newControls;
     };
 
     var getEpics = function () {
@@ -87,10 +94,15 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
         return WebService.saveStories(stories);
     };
 
+    var saveControls = function () {
+        return WebService.saveControls(controls);
+    };
+
     var loadProject = function () {
         WebService.loadProject().then(function (project) {
             console.log('project', project);
             setStories(project.stories);
+            setControls(project.controls);
         });
     };
 
@@ -108,14 +120,20 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
 
     init();
 
+    $timeout(function () {
+        loadProject();
+        loadUsers();
+    },5000);
+
     this.addStory = addStory;
     this.deleteStory = deleteStory;
     this.getStories = getStories;
     this.loadProject = loadProject;
     this.getUsers = getUsers;
     this.getControls = getControls;
+    this.setControls = setControls;
     this.getStoriesByStatus = getStoriesByStatus;
     this.getStoriesByUser = getStoriesByUser;
     this.saveStories = saveStories;
-    this.getEpics = getEpics;
+    this.saveControls = saveControls;
 });

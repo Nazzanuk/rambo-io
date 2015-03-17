@@ -5,7 +5,8 @@ var projectSchema = new Schema({
     name: String,
     stories: Array,
     epics: Array,
-    users : Array
+    users : Array,
+    controls : Object
 });
 
 //projectSchema.methods.fullName = function () {

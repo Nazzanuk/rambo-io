@@ -13,7 +13,7 @@
                 <div class="col-sm-9">
                     <div class="line">
                         <div style="position: relative">
-                            <input type="text" class="invisible-input" value="Friday 20th March">
+                            <input type="text" class="invisible-input" ng-change="saveControls()" ng-model-options="{ updateOn: 'blur' }" ng-model="getControls().name">
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="col-sm-9">
                     <div class="line">
                         <div style="position: relative">
-                            <input type="text" class="invisible-input" value="Friday 20th March">
+                            <input type="text" class="invisible-input" ng-change="saveControls()" ng-model-options="{ updateOn: 'blur' }" ng-model="getControls().startDate">
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                 <div class="col-sm-9">
                     <div class="line">
                         <div style="position: relative">
-                            <input type="text" class="invisible-input" value="Friday 20th March">
+                            <input type="text" class="invisible-input" ng-change="saveControls()" ng-model-options="{ updateOn: 'blur' }" ng-model="getControls().endDate">
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <div ng-repeat="epic in getEpics()">
+                    <div ng-repeat="epic in getControls().epics">
                         <div class="line">
                             <div class="row">
                                 <div class="col-sm-2">
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div style="position: relative">
-                                        <input type="text" class="invisible-input" ng-model="epic.title"/>
+                                        <input type="text" class="invisible-input" ng-change="saveControls()" ng-model-options="{ updateOn: 'blur' }" ng-model="epic.title"/>
                                     </div>
                                 </div>
 
@@ -73,7 +73,7 @@
 
                                     </div>
                                     <div style="position: relative">
-                                        <input type="text" class="invisible-input" ng-model="epic.color"/>
+                                        <input type="text" class="invisible-input" ng-change="saveControls()" ng-model-options="{ updateOn: 'blur' }" ng-model="epic.color"/>
                                     </div>
 
                                 </div>
