@@ -28,11 +28,6 @@ db.once('open', function (callback) {
 
 //GET Service Calls
 
-app.get('/', function (req, res) {
-    console.log('hello...');
-    res.send('hello...');
-});
-
 app.get('/projects', function (req, res) {
     GET.projects('projects', req.query, function (docs) {
         res.send(docs);
