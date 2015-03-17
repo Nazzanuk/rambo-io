@@ -9,7 +9,7 @@
                 <i class="fa fa-exclamation-circle" ng-show="story.isBlocked()" style="color: red"></i>
                 {{story.getName()}}
             </div>
-            <div class="box-color-2" style="background-color:{{controls.epics[story.getEpic()].color}}"></div>
+            <div class="box-color-2" style="background-color:{{getControls().epics[story.getEpic()].color}}"></div>
             <i class="fa fa-bars fa-fw pull-right" ng-click="showMenu()" style="cursor: pointer"></i>
 
             <div class="box-menu" ng-show="isMenuOpen()">
@@ -31,7 +31,7 @@
                     <li ng-click="unblock()" ng-show="story.isBlocked()">Unblock</li>
                     <li>
                         <ul>
-                            <li ng-repeat="epic in controls.epics track by $index"
+                            <li ng-repeat="epic in getControls().epics track by $index"
                                 ng-click="setEpic($index)"
                                     >{{epic.title}}</li>
                         </ul>
@@ -60,7 +60,7 @@
                 <p><strong>Epic</strong></p>
                 <p>
                     <!--<div class="box-color-2" style="background-color:{{controls.epics[story.getEpic()].color}}"></div>-->
-                    {{controls.epics[story.getEpic()].title}}
+                    {{getControls().epics[story.getEpic()].title}}
                 </p>
             </div>
         </div>
