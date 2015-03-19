@@ -1,0 +1,43 @@
+[data-template="popup"] {
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+    background: $darkGlass;
+
+    .popup {
+      position: absolute;
+      width: 600px;
+      max-width: 100%;
+      padding: 30px;
+      background: white;
+      background: $darkGlass;
+      background: #191919;
+      border-radius: 3px;
+      margin-left: -300px;
+      left: 50%;
+      top: 50px;
+      color: $darkGrey;
+      border-radius: 3px;
+
+      .invisible-input {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        padding: 15px;
+        color: white;
+        position: static;
+        height: 40px;
+      }
+
+      textarea.invisible-input {
+        height: 100px;
+      }
+    }
+  }
+
+}

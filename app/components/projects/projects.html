@@ -1,0 +1,10 @@
+<script type="text/ng-template" id="projects.html">
+    <div class="content">
+        <div data-template="projects">
+            <h1>Projects</h1>
+            <hr/>
+            <div class="project" ng-repeat="project in getProjects()" ng-click="setProject(project)"><i class="fa fa-star"></i> &nbsp; &nbsp; {{project.name}}</div>
+        </div>
+
+    </div>
+</script>

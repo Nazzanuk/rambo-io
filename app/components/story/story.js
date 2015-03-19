@@ -5,6 +5,11 @@ app.directive('storyBox', ['DataService', function (DataService) {
         var menuOpen = false;
         var contentOpen = false;
 
+        var showPopup = function () {
+            DataService.setPopupStory(scope.story);
+            DataService.showPopup();
+        };
+
         var showMenu = function () {
             menuOpen = true;
         };
@@ -27,43 +32,43 @@ app.directive('storyBox', ['DataService', function (DataService) {
 
         var block = function () {
             scope.story.block();
-            DataService.saveStories();
+            saveStory();
             hideMenu();
         };
 
         var unblock = function () {
             scope.story.unblock();
-            DataService.saveStories();
+            saveStory();
             hideMenu();
         };
 
         var setStatus = function (status) {
             scope.story.setStatus(status);
-            DataService.saveStories();
+            saveStory();
             hideMenu();
         };
 
         var setDescription = function () {
             scope.story.setDescription(scope.description);
-            DataService.saveStories();
+            saveStory();
             hideMenu();
         };
 
         var deleteStory = function () {
             DataService.deleteStory(scope.story);
-            DataService.saveStories();
+            saveStory();
             hideMenu();
         };
 
         var setEpic = function (index) {
             scope.story.setEpic(index);
-            DataService.saveStories();
+            saveStory();
             hideMenu();
         };
 
         var addUser = function (user) {
             scope.story.addUser(user);
-            DataService.saveStories();
+            saveStory();
             hideMenu();
         };
 
@@ -75,7 +80,11 @@ app.directive('storyBox', ['DataService', function (DataService) {
             DataService.setControls(scope.controls);
         };
 
-        scope.saveStories = DataService.saveStories;
+        scope.saveStory = function () {
+            DataService.saveStory(scope.story);
+        };
+
+        //scope.saveStories = DataService.saveStories;
         scope.getControls = DataService.getControls;
         scope.getUsers = DataService.getUsers;
         scope.getUserById = getUserById;
@@ -91,6 +100,7 @@ app.directive('storyBox', ['DataService', function (DataService) {
         scope.setDescription = setDescription;
         scope.setEpic = setEpic;
         scope.addUser = addUser;
+        scope.showPopup = showPopup;
 
 
         scope.description = scope.story.getDescription();

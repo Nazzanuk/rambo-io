@@ -3,69 +3,70 @@
         <div class="box-header">
             <!--<i class="fa fa-angle-right"></i> &nbsp;-->
 
-            <div class="box-header-title" ng-click="toggleContent()">
-                <i class="fa fa-angle-right" ng-show="!isContentOpen()"></i>
-                <i class="fa fa-angle-down" ng-show="isContentOpen()"></i>
+            <!--<div class="box-header-title" ng-click="toggleContent()">-->
+            <div class="box-header-title" ng-click="showPopup()">
+                <!--<i class="fa fa-angle-right" ng-show="!isContentOpen()"></i>-->
+                <!--<i class="fa fa-angle-down" ng-show="isContentOpen()"></i>-->
                 <i class="fa fa-exclamation-circle" ng-show="story.isBlocked()" style="color: red"></i>
                 {{story.getName()}}
             </div>
             <div class="box-color-2" style="background-color:{{getControls().epics[story.getEpic()].color}}"></div>
-            <i class="fa fa-bars fa-fw pull-right" ng-click="showMenu()" style="cursor: pointer"></i>
+            <!--<i class="fa fa-bars fa-fw pull-right" ng-click="showMenu()" style="cursor: pointer"></i>-->
 
-            <div class="box-menu" ng-show="isMenuOpen()">
-                <div class="box-menu-header">
-                    Menu
-                    <i class="fa fa-times fa-fw pull-right" ng-click="hideMenu()"></i>
-                </div>
+            <!--<div class="box-menu" ng-show="isMenuOpen()">-->
+                <!--<div class="box-menu-header">-->
+                    <!--Menu-->
+                    <!--<i class="fa fa-times fa-fw pull-right" ng-click="hideMenu()"></i>-->
+                <!--</div>-->
 
-                <ul>
-                    <li>
-                        <ul>
-                            <li ng-repeat="user in getUsers() track by $index"
-                                ng-click="addUser(user);"
-                                    >{{user.getName()}}</li>
-                        </ul>
-                        Assign to...
-                    </li>
-                    <li ng-click="block()" ng-show="!story.isBlocked()">Block</li>
-                    <li ng-click="unblock()" ng-show="story.isBlocked()">Unblock</li>
-                    <li>
-                        <ul>
-                            <li ng-repeat="epic in getControls().epics track by $index"
-                                ng-click="setEpic($index)"
-                                    >{{epic.title}}</li>
-                        </ul>
-                        Change Epic...
-                    </li>
-                    <li ng-click="setStatus('in progress')">Start</li>
-                    <li ng-click="setStatus('backlog')">Send to backlog</li>
-                    <li ng-click="setStatus('done')">Done!</li>
-                    <li ng-click="deleteStory()">Delete</li>
-                </ul>
-            </div>
-        </div>
+                <!--<ul>-->
+                    <!--<li>-->
+                        <!--<ul>-->
+                            <!--<li ng-repeat="user in getUsers() track by $index"-->
+                                <!--ng-click="addUser(user);"-->
+                                    <!--{{user.getName()}}</li>-->
+                        <!--</ul>-->
+                        <!--Assign to...-->
+                    <!--</li>-->
+                    <!--<li ng-click="block()" ng-show="!story.isBlocked()">Block</li>-->
+                    <!--<li ng-click="unblock()" ng-show="story.isBlocked()">Unblock</li>-->
+                    <!--<li>-->
+                        <!--<ul>-->
+                            <!--<li ng-repeat="epic in getControls().epics track by $index"-->
+                                <!--ng-click="setEpic($index)"-->
+                                    <!--{{epic.title}}</li>-->
+                        <!--</ul>-->
+                        <!--Change Epic...-->
+                    <!--</li>-->
+                    <!--<li ng-click="setStatus('in progress')">Start</li>-->
+                    <!--<li ng-click="setStatus('backlog')">Send to backlog</li>-->
+                    <!--<li ng-click="setStatus('done')">Done!</li>-->
+                    <!--<li ng-click="deleteStory()">Delete</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <div class="box-content" ng-show="isContentOpen()">
+        <!--<div class="box-content" ng-show="isContentOpen()">-->
 
-            <div style="position: relative">
-                <p><strong>Title</strong></p>
-                <p><input class="invisible-input static" type="text" ng-model="story.name" ng-change="saveStories()"/></p>
+            <!--<div style="position: relative">-->
+                <!--<p><strong>Title</strong></p>-->
+                <!--<p><input class="invisible-input static" type="text" ng-model="story.name" ng-change="saveStory()"/></p>-->
 
-                <p><strong>Description</strong></p>
-                <p><textarea type="text" class="invisible-input static" ng-model="story.description" ng-change="saveStories()"></textarea></p>
+                <!--<p><strong>Description</strong></p>-->
+                <!--<p><textarea type="text" class="invisible-input static" ng-model="story.description" ng-change="saveStory()"></textarea></p>-->
 
-                <p><strong>Users</strong></p>
-                <p>
-                    <div ng-repeat="user in story.getUsers() track by $index">
-                        {{getUserById(user).getName()}}
-                    </div>
-                </p>
-                <p><strong>Epic</strong></p>
-                <p>
-                    <!--<div class="box-color-2" style="background-color:{{controls.epics[story.getEpic()].color}}"></div>-->
-                    {{getControls().epics[story.getEpic()].title}}
-                </p>
-            </div>
-        </div>
+                <!--<p><strong>Users</strong></p>-->
+                <!--<p>-->
+                    <!--<div ng-repeat="user in story.getUsers() track by $index">-->
+                        <!--{{getUserById(user).getName()}}-->
+                    <!--</div>-->
+                <!--</p>-->
+                <!--<p><strong>Epic</strong></p>-->
+                <!--<p>-->
+                    <!--&lt;!&ndash;<div class="box-color-2" style="background-color:{{controls.epics[story.getEpic()].color}}"></div>&ndash;&gt;-->
+                    <!--{{getControls().epics[story.getEpic()].title}}-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </script>

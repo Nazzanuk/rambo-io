@@ -1,0 +1,31 @@
+{
+  "entity$": {"name": "project"},
+  "slug": "rambo-io",
+  "name": "Rambo.io",
+  "users": [{"id": "5506ecb8e4b018f3e291ef23"}],
+  "epics": [
+    {
+      "color": "#b9262c",
+      "title": "UX"
+    },
+    {
+      "color": "#356dae",
+      "title": "Howdy"
+    },
+    {
+      "color": "#6aae2a",
+      "title": "Code"
+    },
+    {
+      "color": "orange",
+      "title": "Rambo"
+    },
+    {
+      "color": "#ffffff",
+      "title": "Other"
+    }
+  ],
+  "endDate": "30th April",
+  "startDate": "31st March",
+  "id": "0wb2u5"
+}

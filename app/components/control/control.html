@@ -13,7 +13,21 @@
                 <div class="col-sm-9">
                     <div class="line">
                         <div style="position: relative">
-                            <input type="text" class="invisible-input" ng-change="saveControls()"  ng-model="getControls().name">
+                            <input type="text" class="invisible-input" ng-change="saveProject()"  ng-model="getProject().name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>Project Slug</h2>
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="line">
+                        <div style="position: relative">
+                            <input type="text" class="invisible-input" ng-change="saveProject()"  ng-model="getProject().slug">
                         </div>
                     </div>
                 </div>
@@ -27,7 +41,7 @@
                 <div class="col-sm-9">
                     <div class="line">
                         <div style="position: relative">
-                            <input type="text" class="invisible-input" ng-change="saveControls()"  ng-model="getControls().startDate">
+                            <input type="text" class="invisible-input" ng-change="saveProject()"  ng-model="getProject().startDate">
                         </div>
                     </div>
                 </div>
@@ -41,7 +55,7 @@
                 <div class="col-sm-9">
                     <div class="line">
                         <div style="position: relative">
-                            <input type="text" class="invisible-input" ng-change="saveControls()"  ng-model="getControls().endDate">
+                            <input type="text" class="invisible-input" ng-change="saveProject()"  ng-model="getProject().endDate">
                         </div>
                     </div>
                 </div>
@@ -53,7 +67,7 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <div ng-repeat="epic in getControls().epics">
+                    <div ng-repeat="epic in getProject().epics">
                         <div class="line">
                             <div class="row">
                                 <div class="col-sm-2">
@@ -61,7 +75,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div style="position: relative">
-                                        <input type="text" class="invisible-input" ng-change="saveControls()"  ng-model="epic.title"/>
+                                        <input type="text" class="invisible-input" ng-change="saveProject()"  ng-model="epic.title"/>
                                     </div>
                                 </div>
 
@@ -73,7 +87,7 @@
 
                                     </div>
                                     <div style="position: relative">
-                                        <input type="text" class="invisible-input" ng-change="saveControls()"  ng-model="epic.color"/>
+                                        <input type="text" class="invisible-input" ng-change="saveProject()"  ng-model="epic.color"/>
                                     </div>
 
                                 </div>

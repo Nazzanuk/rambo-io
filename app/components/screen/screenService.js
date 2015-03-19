@@ -4,7 +4,7 @@ var app = angular.module('rambo-io');
 
 app.service("ScreenService", function ($timeout) {
 
-    var currentScreen = 'board';
+    var currentScreen = 'projects';
 
     var screens = [
         {

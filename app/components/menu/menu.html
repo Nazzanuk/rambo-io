@@ -7,6 +7,14 @@
         </div>
 
         <ul>
+            <li ng-class="{active:isScreen('projects')}" ng-click="setScreen('projects')">
+                <i class="fa fa-star"></i>
+
+                <div>Projects</div>
+            </li>
+        </ul>
+
+        <ul ng-show="isProjectLoaded()">
             <li ng-class="{active:isScreen('board')}" ng-click="setScreen('board')">
                 <i class="fa fa-users"></i>
 

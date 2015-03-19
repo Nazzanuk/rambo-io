@@ -1,0 +1,17 @@
+[data-template="projects"] {
+
+  .project {
+    background: $darkGlass;
+    line-height: 40px;
+    color: white;
+    padding: 0 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    i {
+      color: gold;
+    }
+  }
+}

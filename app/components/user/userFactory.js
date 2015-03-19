@@ -34,7 +34,7 @@ app.service("UserFactory", function () {
 
     User.prototype.setName = set('name');
     User.prototype.getName = get('name');
-    User.prototype.getID = get('_id');
+    User.prototype.getID = get('id');
     User.prototype.setImage = set('image');
     User.prototype.getImage = get('image');
 

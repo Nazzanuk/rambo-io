@@ -1,0 +1,56 @@
+<script type="text/ng-template" id="popup.html">
+    <div data-template="popup">
+        <div class="overlay" style="display: none" ng-click="hidePopup()">
+            <div class="popup" ng-click="$event.stopPropagation();">
+                <h1>{{getPopupStory().name}}</h1>
+                <hr/>
+                <div style="height: 400px;overflow-y: auto;position: relative">
+
+                    <p><strong>Title</strong></p>
+                    <p>
+                        <input class="invisible-input" ng-model="getPopupStory().name" ng-change="saveStory()"/>
+                    </p>
+                    <br/>
+
+                    <p><strong>Description</strong></p>
+                    <p>
+                        <textarea class="invisible-input" ng-model="getPopupStory().description" ng-change="saveStory()"></textarea>
+                    </p>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p><strong>Status</strong></p>
+                            <p>
+                                <select class="invisible-input" ng-model="getPopupStory().status" ng-change="saveStory()">
+                                    <option value="backlog">Backlog</option>
+                                    <option value="in progress">In Progress</option>
+                                    <option value="done">Done</option>
+                                </select>
+                            </p>
+                            <br/>
+                        </div>
+                        <div class="col-sm-6">
+                            <p><strong>Epic</strong></p>
+                            <p>
+                                <select class="invisible-input" ng-model="getPopupStory().epic" ng-change="saveStory()">
+                                    <option value="{{$index}}" ng-repeat="epic in getProject().epics track by $index">{{epic.title}}</option>
+                                </select>
+                            </p>
+                            <br/>
+                        </div>
+                    </div>
+
+                    <p><strong>Users</strong></p>
+                    <p>
+                        <input class="invisible-input" ng-model="getPopupStory().users[0]" ng-change="saveStory()"/>
+                    </p>
+                    <br/>
+
+                </div>
+
+                <!--<p>{{getPopupStory().description}}</p>-->
+            </div>
+        </div>
+    </div>
+</script>

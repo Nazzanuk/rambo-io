@@ -5,6 +5,9 @@ app.directive('board', ['DataService', function (DataService) {
         scope.getStories = DataService.getStories;
         scope.getUsers = DataService.getUsers;
         scope.getStoriesByUser = DataService.getStoriesByUser;
+        scope.getProjectName = function () {
+            return DataService.getProject().name;
+        }
     };
 
     return {

@@ -5,68 +5,59 @@ var app = angular.module('rambo-io');
 app.service("WebService", function (StoryFactory, UserFactory, $http) {
 
     var DB_URL = "/";
-    var PROJECT_ID = "5506ba66e4b018f3e291ec10";
 
     var dontCache = function () {
         return "?dontcache=" + new Date().getTime();
     };
 
-    var saveStories = function (stories) {
-        var body = {
-            stories: stories,
-            _id: PROJECT_ID,
-            dontCache: new Date().getTime()
-        };
-        return $http.put(DB_URL + 'projects/', body).then(function (response) {
-            return response.docs;
+    var addStory = function (story) {
+        return $http.post(DB_URL + 'stories/', story).then(function (response) {
+            return response.data;
         });
     };
 
-    var saveControls = function (controls) {
-        var body = {
-            controls: controls,
-            _id: PROJECT_ID,
-            dontCache: new Date().getTime()
-        };
-        return $http.put(DB_URL + 'projects/', body).then(function (response) {
-            return response.docs;
+    var saveStory = function (story) {
+        return $http.put(DB_URL + 'stories/id/' + story.id, story).then(function (response) {
+            return response.data;
         });
     };
 
-    var loadProject = function () {
-        return $http.get(DB_URL + 'projects/id/' + PROJECT_ID + dontCache()).then(function (response) {
-            console.log(response);
-            return response.data.docs[0];
+    var saveProject = function (project) {
+        return $http.put(DB_URL + 'projects/id/' + project.id, project).then(function (response) {
+            return response;
+        });
+    };
+
+    var loadProject = function (project) {
+        return $http.get(DB_URL + 'projects/id/' + project.id + dontCache()).then(function (response) {
+            return response.data;
+        });
+    };
+
+    var loadProjects = function () {
+        return $http.get(DB_URL + 'projects/').then(function (response) {
+            return response.data;
+        });
+    };
+
+    var loadStories = function (project) {
+        return $http.get(DB_URL + 'projects/id/' + project.id + '/stories/' + dontCache()).then(function (response) {
+            return response.data;
         });
     };
 
     var loadUsers = function () {
-        return $http({
-            method: 'GET',
-            url: DB_URL + 'users/',
-            data: { dontCache: dontCache() }
-        }).then(function (response) {
-            console.log(response);
-            return response.data.docs;
+        return $http.get(DB_URL + 'users/' + dontCache()).then(function (response) {
+            return response.data;
         });
     };
 
-    var loadCollection = function (collection) {
-        return $http.get(DB_URL + collection + '/').then(function (response) {
-            console.log(response);
-            return response.data.docs;
-        })
-    };
-
-    var loadDocumentById = function (collection, id) {
-        return $http.get(DB_URL + collection + '/id/' + id).then(function (response) {
-            console.log(response);
-            return response.data.docs[0];
-        })
-    };
-
-    this.saveStories = saveStories;
-    this.saveControls = saveControls;
+    //this.saveStories = saveStories;
+    this.saveStory = saveStory;
+    this.addStory = addStory;
+    this.saveProject = saveProject;
     this.loadProject = loadProject;
+    this.loadProjects = loadProjects;
+    this.loadStories = loadStories;
     this.loadUsers = loadUsers;
 });

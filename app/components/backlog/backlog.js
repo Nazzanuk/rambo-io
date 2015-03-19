@@ -8,6 +8,10 @@ app.directive('backlog', ['DataService', function (DataService) {
             DataService.addStory(scope.newStoryTitle);
             scope.newStoryTitle = "";
         }
+
+        scope.getProjectName = function () {
+            return DataService.getProject().name;
+        }
     };
 
     return {

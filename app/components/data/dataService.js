@@ -6,30 +6,45 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
 
     var stories = [];
     var users = [];
-    var controls = {
-        projectName: "",
-        startDate: "",
-        endDate: "",
-        epics: [
-            {title: '', color: ''},
-            {title: '', color: ''},
-            {title: '', color: ''},
-            {title: '', color: ''},
-            {title: '', color: ''}
-        ]
+    var projects = [];
+    var project = {};
+    var popup = {
+        visible: true,
+        story: {}
     };
 
-    var getControls = function () {
-        return controls;
+    var showPopup = function() {
+        $('[data-template="popup"] .overlay').velocity('transition.slideUpIn', 300);
     };
 
-    var setControls = function (newControls) {
-        if (newControls == undefined) return;
-        controls = newControls;
+    var hidePopup = function() {
+        $('[data-template="popup"] .overlay').velocity('transition.slideUpOut', 300);
     };
 
-    var getEpics = function () {
-        return controls.epics;
+    var setPopupStory = function(story) {
+        popup.story = story;
+    };
+
+    var getPopupStory = function() {
+        return popup.story;
+    };
+
+    var isProjectLoaded = function () {
+        return project.id != undefined;
+    };
+
+    var setProject = function (newProject) {
+        project = newProject;
+        update();
+        return project;
+    };
+
+    var getProject = function () {
+        return project;
+    };
+
+    var getProjects = function () {
+        return projects;
     };
 
     var getStories = function () {
@@ -68,7 +83,7 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
         var userStories = [];
 
         for (var i in storiesInProgress) {
-            if (_.where(storiesInProgress[i].getUsers(), {_id: user.getID()}).length > 0) {
+            if (_.where(storiesInProgress[i].getUsers(), user.getID()).length > 0) {
                 userStories.push(storiesInProgress[i]);
             }
         }
@@ -77,8 +92,16 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
     };
 
     var addStory = function (title) {
-        stories.push(new StoryFactory(title));
-        saveStories();
+        var story = new StoryFactory(title, {project:project});
+        return WebService.addStory(story).then(function () {
+            loadStories();
+        });
+    };
+
+    var saveStory = function (story) {
+        return WebService.saveStory(story).then(function () {
+            loadStories();
+        });
     };
 
     var deleteStory = function (story) {
@@ -94,46 +117,75 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
         return WebService.saveStories(stories);
     };
 
-    var saveControls = function () {
-        return WebService.saveControls(controls);
+    var saveProject = function () {
+        console.log("DataService.SaveProject", project);
+        return WebService.saveProject(project);
     };
 
     var loadProject = function () {
-        WebService.loadProject().then(function (project) {
-            console.log('project', project);
-            setStories(project.stories);
-            setControls(project.controls);
+        WebService.loadProject(project).then(function (newProject) {
+            console.log('newProject', newProject);
+            project = newProject;
+        });
+    };
+
+    var loadProjects = function () {
+        WebService.loadProjects().then(function (newProjects) {
+            console.log('newProjects', newProjects);
+            projects = newProjects;
+        });
+    };
+
+    var loadStories = function () {
+        return WebService.loadStories(project).then(function (stories) {
+            console.log('stories', stories);
+            setStories(stories);
         });
     };
 
     var loadUsers = function () {
-        WebService.loadUsers().then(function (users) {
+        WebService.loadUsers(project).then(function (users) {
             console.log('users', users);
             setUsers(users);
         });
     };
 
-    var init = function () {
+    var update = function () {
         loadProject();
+        loadStories();
         loadUsers();
+    };
+
+    var init = function () {
+        loadProjects();
     };
 
     init();
 
     $interval(function () {
-        loadProject();
-        loadUsers();
+        if (isProjectLoaded()) {
+            update();
+        }
     }, 10000);
 
+    this.showPopup = showPopup;
+    this.hidePopup = hidePopup;
+    this.setPopupStory = setPopupStory;
+    this.getPopupStory = getPopupStory;
+
     this.addStory = addStory;
+    this.saveStory = saveStory;
     this.deleteStory = deleteStory;
     this.getStories = getStories;
+    this.isProjectLoaded = isProjectLoaded;
+    this.setProject = setProject;
+    this.getProject = getProject;
+    this.getProjects = getProjects;
+    this.saveProject = saveProject;
     this.loadProject = loadProject;
+    this.loadStories = loadStories;
     this.getUsers = getUsers;
-    this.getControls = getControls;
-    this.setControls = setControls;
     this.getStoriesByStatus = getStoriesByStatus;
     this.getStoriesByUser = getStoriesByUser;
-    this.saveStories = saveStories;
-    this.saveControls = saveControls;
+    this.update = update;
 });
