@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /app
-forever webhooks.js
+sudo forever start "seneca/seneca-service.js"

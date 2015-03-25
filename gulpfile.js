@@ -13,11 +13,9 @@ var gulp = require('gulp'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     using = require('gulp-using'),
-    livereload = require('gulp-livereload'),
     del = require('del');
 
 // HTML

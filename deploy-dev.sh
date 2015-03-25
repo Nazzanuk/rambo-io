@@ -5,9 +5,8 @@ cd rambo-io
 git fetch
 git reset --hard origin/master
 git pull
-sudo npm install
+sudo npm install --loglevel info
 bower install
 gulp
-gulp set-dev
 sh build.sh
 '"
