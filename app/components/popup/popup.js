@@ -7,9 +7,16 @@ app.directive('popup', ['DataService', function (DataService) {
             DataService.saveStory(scope.getPopupStory());
         };
 
+        scope.changeUser = function () {
+            if (scope.getPopupStory().users[0] == "") {
+
+            }
+        };
+
         scope.getPopupStory = DataService.getPopupStory;
         scope.getProject = DataService.getProject;
         scope.hidePopup = DataService.hidePopup;
+        scope.getUsers = DataService.getUsers;
     };
 
     return {

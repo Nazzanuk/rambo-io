@@ -68,8 +68,8 @@ gulp.task('gen-js', function () {
 
 // Images
 gulp.task('gen-img', function () {
-    return gulp.src('app/img/**/*')
-        .pipe(cache(imagemin({optimizationLevel: 3, progressive: true, interlaced: true})))
+    return gulp.src('app/img/**/*.*')
+        //.pipe(cache(imagemin({optimizationLevel: 3, progressive: true, interlaced: true})))
         .pipe(gulp.dest('release/img'))
         .pipe(notify({message: 'Images task complete'}));
 });

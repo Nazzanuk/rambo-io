@@ -1,5 +1,5 @@
 var seneca = require('seneca')();
-seneca.use('jsonfile-store', {folder: './db'});
+seneca.use('jsonfile-store', {folder: './seneca/db'});
 
 var _ = require("underscore");
 var express = require('express');

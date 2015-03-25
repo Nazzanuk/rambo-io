@@ -1,11 +1,18 @@
 [data-template="control"] {
-  color: white;
-  .line {
-    background: $darkGlass;
+  color: black;
+
+  h2 {
     line-height: 40px;
-    padding: 0 15px;
+    margin: 0;
+  }
+  .line {
+    background: $glass;
+    line-height: 40px;
+    padding: 0 25px;
     margin-bottom: 15px;
     min-height: 40px;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.1);
+    border-radius: 40px;
 
     .line-color {
       float: left;
@@ -20,6 +27,9 @@
 
     input {
       outline: none;
+    }
+
+    strong {
     }
   }
 

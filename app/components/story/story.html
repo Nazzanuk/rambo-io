@@ -1,16 +1,17 @@
 <script type="text/ng-template" id="story.html">
     <div class="box">
-        <div class="box-header">
+        <div class="box-header" style="border-left:3px solid {{getProject().epics[story.getEpic()].color}};">
             <!--<i class="fa fa-angle-right"></i> &nbsp;-->
 
             <!--<div class="box-header-title" ng-click="toggleContent()">-->
             <div class="box-header-title" ng-click="showPopup()">
-                <!--<i class="fa fa-angle-right" ng-show="!isContentOpen()"></i>-->
+                <i class="fa fa-arrow-right pull-right" ng-show="story.getStatus() != 'done'" ng-click="nextStatus(); console.log('zzz');$event.stopPropagation();"></i>
+                <i class="fa fa-arrow-left pull-right" ng-show="story.getStatus() != 'backlog'" ng-click="prevStatus(); $event.stopPropagation();"></i>
                 <!--<i class="fa fa-angle-down" ng-show="isContentOpen()"></i>-->
                 <i class="fa fa-exclamation-circle" ng-show="story.isBlocked()" style="color: red"></i>
                 {{story.getName()}}
             </div>
-            <div class="box-color-2" style="background-color:{{getControls().epics[story.getEpic()].color}}"></div>
+            <div class="box-color-2" style="background-color:{{getProject().epics[story.getEpic()].color}}" title="{{getProject().epics[story.getEpic()].title}}"></div>
             <!--<i class="fa fa-bars fa-fw pull-right" ng-click="showMenu()" style="cursor: pointer"></i>-->
 
             <!--<div class="box-menu" ng-show="isMenuOpen()">-->

@@ -4,7 +4,7 @@
             <div class="popup" ng-click="$event.stopPropagation();">
                 <h1>{{getPopupStory().name}}</h1>
                 <hr/>
-                <div style="height: 400px;overflow-y: auto;position: relative">
+                <div style="position: relative">
 
                     <p><strong>Title</strong></p>
                     <p>
@@ -41,11 +41,30 @@
                         </div>
                     </div>
 
-                    <p><strong>Users</strong></p>
-                    <p>
-                        <input class="invisible-input" ng-model="getPopupStory().users[0]" ng-change="saveStory()"/>
-                    </p>
-                    <br/>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p><strong>Assigned to</strong></p>
+                            <p>
+                                <select class="invisible-input" ng-model="getPopupStory().user" ng-change="saveStory()">
+                                    <option value="">Not Assigned</option>
+                                    <option value="{{user.id}}" ng-repeat="user in getUsers() track by $index">{{user.name}}</option>
+                                </select>
+                            </p>
+                            <br/>
+                            </div>
+                        <div class="col-sm-6">
+                            <p><strong>Blocked</strong></p>
+                            <p>
+                                <select class="invisible-input" ng-model="getPopupStory().blocked" ng-change="saveStory()">
+                                    <option value="{{true}}">Blocked</option>
+                                    <option value="">Unblocked</option>
+                                </select>
+                            </p>
+                            <br/>
+                        </div>
+                        </div>
+                    </div>
+
 
                 </div>
 

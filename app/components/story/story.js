@@ -33,59 +33,71 @@ app.directive('storyBox', ['DataService', function (DataService) {
         var block = function () {
             scope.story.block();
             saveStory();
-            hideMenu();
         };
 
         var unblock = function () {
             scope.story.unblock();
             saveStory();
-            hideMenu();
         };
 
         var setStatus = function (status) {
             scope.story.setStatus(status);
             saveStory();
-            hideMenu();
+        };
+
+        var nextStatus = function () {
+            if (scope.story.getStatus() == 'in progress') {
+                setStatus('done');
+            } else {
+                setStatus('in progress');
+            }
+            saveStory();
+        };
+
+        var prevStatus = function () {
+            if (scope.story.getStatus() == 'in progress') {
+                setStatus('backlog');
+            } else {
+                setStatus('in progress');
+            }
+            saveStory();
         };
 
         var setDescription = function () {
             scope.story.setDescription(scope.description);
             saveStory();
-            hideMenu();
         };
 
         var deleteStory = function () {
             DataService.deleteStory(scope.story);
             saveStory();
-            hideMenu();
         };
 
         var setEpic = function (index) {
             scope.story.setEpic(index);
             saveStory();
-            hideMenu();
         };
 
         var addUser = function (user) {
             scope.story.addUser(user);
             saveStory();
-            hideMenu();
         };
 
         var getUserById = function (user) {
             return _.findWhere(DataService.getUsers(), {_id:user._id});
         };
 
+        var saveStory = function () {
+            DataService.saveStory(scope.story);
+        };
+
         scope.setControls = function () {
             DataService.setControls(scope.controls);
         };
 
-        scope.saveStory = function () {
-            DataService.saveStory(scope.story);
-        };
-
         //scope.saveStories = DataService.saveStories;
         scope.getControls = DataService.getControls;
+        scope.getProject = DataService.getProject;
         scope.getUsers = DataService.getUsers;
         scope.getUserById = getUserById;
         scope.showMenu = showMenu;
@@ -101,6 +113,9 @@ app.directive('storyBox', ['DataService', function (DataService) {
         scope.setEpic = setEpic;
         scope.addUser = addUser;
         scope.showPopup = showPopup;
+        scope.nextStatus = nextStatus;
+        scope.prevStatus = prevStatus;
+        scope.saveStory = saveStory;
 
 
         scope.description = scope.story.getDescription();

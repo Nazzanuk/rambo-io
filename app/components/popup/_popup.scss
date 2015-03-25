@@ -9,8 +9,10 @@
 
     z-index: 100;
     background: $darkGlass;
+    overflow-y: auto;
 
     .popup {
+      box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
       position: absolute;
       width: 600px;
       max-width: 100%;
@@ -18,20 +20,32 @@
       background: white;
       background: $darkGlass;
       background: #191919;
+      background: rgba(255,255,255,0.95);
       border-radius: 3px;
       margin-left: -300px;
       left: 50%;
       top: 50px;
       color: $darkGrey;
+      color: white;
       border-radius: 3px;
+      margin-bottom: 100px;
 
       .invisible-input {
         background: rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.1);
         border-radius: 3px;
         padding: 15px;
-        color: white;
+        color: $darkGrey;
         position: static;
         height: 40px;
+      }
+
+      hr {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      h1, p, strong {
+        color: $darkGrey;
       }
 
       textarea.invisible-input {

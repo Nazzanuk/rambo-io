@@ -79,16 +79,18 @@ app.service("DataService", function (StoryFactory, UserFactory, WebService, $htt
 
     var getStoriesByUser = function (user) {
 
-        var storiesInProgress = _.where(stories, {status: 'in progress'});
-        var userStories = [];
+        var storiesInProgress = _.where(stories, {status: 'in progress', user:user.id});
+        //console.log('storiesInProgress', storiesInProgress);
+        //var userStories = [];
+        //
+        //for (var i in storiesInProgress) {
+        //    if (_.where(storiesInProgress[i].getUsers(), user.getID()).length > 0) {
+        //        userStories.push(storiesInProgress[i]);
+        //    }
+        //}
 
-        for (var i in storiesInProgress) {
-            if (_.where(storiesInProgress[i].getUsers(), user.getID()).length > 0) {
-                userStories.push(storiesInProgress[i]);
-            }
-        }
-
-        return userStories;
+        return storiesInProgress;
+        //return userStories;
     };
 
     var addStory = function (title) {

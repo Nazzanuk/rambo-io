@@ -2,16 +2,21 @@
 
   .project {
     background: $darkGlass;
+    background: white;
+    background: $glass;
     line-height: 40px;
-    color: white;
+    color: black;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+//    border-left: 3px solid $primary;
     padding: 0 15px;
-    font-weight: bold;
+    font-weight: 400;
     border-radius: 50px;
     cursor: pointer;
     margin-bottom: 10px;
 
     i {
       color: gold;
+      color: $primary;
     }
   }
 }

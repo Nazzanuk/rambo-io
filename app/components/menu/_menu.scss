@@ -1,15 +1,22 @@
 [data-template="menu"] {
   background: $darkGlass;
+  background: $glass;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   width: 100px;
   text-align: center;
+  color: #000000;
+  color: $darkGlass;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1);
+  border-left:3px solid $primary;
 
   .logo {
     margin-bottom: 50px;
     color: #ffffff;
+    color: #000000;
+    color: $darkGlass;
     img {
       opacity: 0.9;
       margin: 15px;
@@ -40,6 +47,8 @@
 
       &:hover, &.active {
         color: #ffffff;
+        color: #000000;
+        color: $primary;
       }
     }
   }

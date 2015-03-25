@@ -23,4 +23,4 @@ RUN cd /app; gulp
 
 EXPOSE 5000
 CMD ["sh", "/app/run.sh"]
-# sudo forever start -w "server/server.js"
+# sudo forever start -w "seneca/seneca.js"
