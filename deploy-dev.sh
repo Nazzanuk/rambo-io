@@ -8,5 +8,5 @@ git pull
 sudo npm install --loglevel info
 bower install
 gulp
-sh build.sh
+sh build-server.sh
 '"
