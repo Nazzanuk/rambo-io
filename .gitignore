@@ -4,8 +4,8 @@ release
 .sass-cache
 .idea
 newrelic_agent.log
-# seneca/db/project
-# seneca/db/user
-# seneca/db/product
-# seneca/db/story
-# seneca/db/project_project
+seneca/db/project
+seneca/db/user
+seneca/db/product
+seneca/db/story
+seneca/db/project_project
