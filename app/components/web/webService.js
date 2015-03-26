@@ -4,7 +4,7 @@ var app = angular.module('rambo-io');
 
 app.service("WebService", function (StoryFactory, UserFactory, $http) {
 
-    var DB_URL = "/";
+    var DB_URL = "http://app.rambo.io/";
 
     var dontCache = function () {
         return "?dontcache=" + new Date().getTime();
